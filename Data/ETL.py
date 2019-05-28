@@ -16,12 +16,12 @@ lngs = []
 for address in df_deliver_to['FullAddress']:
     print(address)
     if geolocator.geocode(address) is None:
-        print('ping not received')
+        print('-- ping not received')
         lats.append('NaN')
         lngs.append('NaN')
 
     else:
-        print('ping received')
+        print('++ ping received')
         location =  geolocator.geocode(address)
         lats.append(location.latitude)
         lngs.append(location.longitude)
