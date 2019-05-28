@@ -16,6 +16,14 @@ from dash.dependencies import Input, Output
 from sklearn.externals import joblib
 import plotly.graph_objs as go
 
+# Import ETL data
+
+filename = 'data_fake_lat-lng.xlsx'
+
+df_deliver_from = pd.read_excel(filename, sheet_name='from')  # Shape (32776, 14)
+df_deliver_to = pd.read_excel(filename, sheet_name='to')
+
+df_deliver_to_mapped = df_deliver_to[df_deliver_to.lat.isna() != True]
 
 def one_hot(df, cols):
     """
@@ -30,21 +38,17 @@ def one_hot(df, cols):
 
 
 
+df_delivery = df_deliver_from.merge(df_deliver_to_mapped, how='inner', left_on='Account', right_on='Account') # Shape (40619, 27)
+
+df_delivery = df_delivery.drop(['VehicleID', 'PlanArrival', 'ActualArrival', 'DepartureDoor', 'AccountName', 'Account', 'Address', 'City', 'State', 'ZipCode', 'FullAddress', 'HasNAs', 'ShiftHour'], axis=1)
 
 
-df_delivery = df_deliver_from.merge(df_deliver_to, how='inner', left_on='Account', right_on='Account') # Shape (40619, 27)
+numeric_variables= ['Miles', 'PlanVsActual', 'TravelTime',  'lat', 'lng']
+categorical_variables = ['Date', 'Day', 'Week', 'Month', 'Quarter', 'Driver', 'Supervisor', 'Shift']
 
 
+df_ML = one_hot(df_delivery, categorical_variables)
 
-numeric_variables= ['PlanArrival', 'ActualArrival', 'Miles', 'PlanVsActual', 'TravelTime', 'HasNAs', 'lat', 'lng']
-categorical_variables = ['Date', 'Day', 'Week', 'Month', 'Quarter', 'Driver', 'VehicleID',
-       'Account',  'Supervisor', 'Shift',
-       'ShiftHour', 'DepartureDoor', 'AccountName', 'Address',
-       'City', 'State', 'ZipCode']
+train_set, test_set = train_test_split(df_ML, test_size=0.2, random_state=42)
 
-
-#df_ML = one_hot(df_delivery, categorical_variables)
-
-#train_set, test_set = train_test_split(df_ML, test_size=0.2, random_state=42)
-
-#df_copy = train_set.copy()
+df_copy = train_set.copy()
