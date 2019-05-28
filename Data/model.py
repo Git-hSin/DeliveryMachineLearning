@@ -17,8 +17,6 @@ from sklearn.externals import joblib
 import plotly.graph_objs as go
 
 
-filename = 'data.xlsx'
-
 def one_hot(df, cols):
     """
     @param df pandas DataFrame
@@ -30,21 +28,23 @@ def one_hot(df, cols):
         df = pd.concat([df, dummies], axis=1)
     return df
 
-df_deliver_from = pd.read_excel(filename, sheet_name='from')  # Shape (32776, 14)
-df_deliver_to = pd.read_excel(filename, sheet_name='to') # Shape (657, 14) 339/657 missing some data
+
+
+
 
 df_delivery = df_deliver_from.merge(df_deliver_to, how='inner', left_on='Account', right_on='Account') # Shape (40619, 27)
 
 
-numeric_variables= ['Date', 'PlanArrival', 'ActualArrival', 'Miles', 'PlanVsActual', 'TravelTime', 'HasNAs']
-categorical_variables = [ 'Day', 'Week', 'Month', 'Quarter', 'Driver', 'VehicleID',
+
+numeric_variables= ['PlanArrival', 'ActualArrival', 'Miles', 'PlanVsActual', 'TravelTime', 'HasNAs', 'lat', 'lng']
+categorical_variables = ['Date', 'Day', 'Week', 'Month', 'Quarter', 'Driver', 'VehicleID',
        'Account',  'Supervisor', 'Shift',
        'ShiftHour', 'DepartureDoor', 'AccountName', 'Address',
        'City', 'State', 'ZipCode']
 
 
-df_ML = one_hot(df_delivery, categorical_variables)
+#df_ML = one_hot(df_delivery, categorical_variables)
 
-train_set, test_set = train_test_split(df_ML, test_size=0.2, random_state=42)
+#train_set, test_set = train_test_split(df_ML, test_size=0.2, random_state=42)
 
-df_copy = train_set.copy()
+#df_copy = train_set.copy()
