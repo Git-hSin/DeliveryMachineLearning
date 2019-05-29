@@ -24,7 +24,8 @@ filename = 'data_fake_lat-lng.xlsx'
 df_deliver_from = pd.read_excel(filename, sheet_name='from')  # Shape (32776, 14)
 df_deliver_to = pd.read_excel(filename, sheet_name='to')
 
-df_deliver_to_mapped = df_deliver_to[df_deliver_to.isna() != True]
+df_deliver_from_mapped = df_deliver_from.dropna()
+df_deliver_to_mapped = df_deliver_to.dropna()
 
 def one_hot(df, cols):
     """
@@ -39,7 +40,7 @@ def one_hot(df, cols):
 
 
 
-df_delivery = df_deliver_from.merge(df_deliver_to_mapped, how='inner', left_on='Account', right_on='Account') # Shape (40619, 27)
+df_delivery = df_deliver_from_mapped.merge(df_deliver_to_mapped, how='inner', left_on='Account', right_on='Account') # Shape (40619, 27)
 
 df_delivery = df_delivery.drop(['VehicleID', 'PlanArrival', 'ActualArrival', 'DepartureDoor', 'AccountName', 'Account', 'Address', 'City', 'State', 'ZipCode', 'FullAddress', 'HasNAs', 'ShiftHour'], axis=1).reset_index()
 
@@ -48,7 +49,7 @@ df_delivery = df_delivery.drop(['VehicleID', 'PlanArrival', 'ActualArrival', 'De
 
 
 numeric_variables= ['Miles', 'PlanVsActual', 'TravelTime',  'lat', 'lng']
-categorical_variables = ['Date', 'Day', 'Week', 'Month', 'Quarter', 'Driver', 'Supervisor', 'Shift']
+categorical_variables = ['Month','Dt','Year', 'Day', 'Week', 'Quarter', 'Driver', 'Supervisor', 'Shift']
 
 
 df_ML = one_hot(df_delivery, categorical_variables)
@@ -63,15 +64,16 @@ feature_names = data.columns
 
 from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(data, target, random_state=42)
-clf = tree.DecisionTreeClassifier()
+clf = tree.DecisionTreeRegressor()
 clf = clf.fit(X_train, y_train)
 clf.score(X_test, y_test)
 
-from sklearn.ensemble import RandomForestClassifier
-rf = RandomForestClassifier(n_estimators=200)
+from sklearn.ensemble import RandomForestRegressor
+rf = RandomForestRegressor(n_estimators=200)
 rf = rf.fit(X_train, y_train)
 rf.score(X_test, y_test)
 
 sorted(zip(rf.feature_importances_, feature_names), reverse=True)
-train_set, test_set = train_test_split(df_ML, test_size=0.2, random_state=42)
+#train_set, test_set = train_test_split(df_ML, test_size=0.2, random_state=42)
+
 #df_copy = train_set.copy()
