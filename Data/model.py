@@ -63,7 +63,7 @@ data = df_ML_test.drop('PlanVsActual', axis=1)
 feature_names = data.columns
 
 from sklearn.model_selection import train_test_split
-X_train, X_test, y_train, y_test = train_test_split(data, target, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(data, target, random_state=37)
 clf = tree.DecisionTreeRegressor()
 clf = clf.fit(X_train, y_train)
 clf.score(X_test, y_test)
