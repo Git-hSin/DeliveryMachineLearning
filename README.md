@@ -28,6 +28,7 @@ With a well trained machine learning model, and enough historical data, we can p
 * After identifying which drivers were late to their deliveries in Q1 and Q2 of this year, there were over 32,000 records of usable data to work with. 
 * On Time: If a driver arrived at the Account location before or at the scheduled arrival time
 * Late: If a driver arrived at the Account location after the scheduled arrival time. 
+* Our development team will share theri work via a *Git* development branch and push to a master branch once the project is ready for delpoyment. 
 
 ### Data Collection
 * Our Data Entry and Acquisition Department has tracked the data for each day. 
