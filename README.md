@@ -29,8 +29,12 @@ With a well trained machine learning model, and enough historical data, we can p
 
 ### Data Collection
 * Using functions in Microsoft Excel, organize historical data
-### Data Cleaning
-* Filter data into categorical and calculable tables. Primary key between the two is Account
+![Excel](img/excel_after.png)
+### Data Cleaning and Preprocessing 
+* Use Microsoft Excel table filters to zero in on bad data 
+![Bad Data](img/bad_data.png
+### Database Organization
+* Filter data into categorical and calculable tables
 
 ## Technologies Used
 
