@@ -36,7 +36,7 @@ With a well trained machine learning model, and enough historical data, we can p
 ### Database Organization
 * Filter data into categorical and calculable tables
 * Use SQLite3 to organize the data into a 
-* [SQLite](img/sqlite.png)
+* ![SQLite](img/sqlite.png)
 
 ## Strategy and Metrics
 * After identifying which drivers were late to their deliveries in Q1 and Q2 of this year, there were over 32,000 records of usable data to work with. 
