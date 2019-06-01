@@ -14,18 +14,22 @@ With all of this in mind, our development team has constructed a machine learnin
 
 ## Objective/Purpose
 
-Predict if a delivery will be on time or late. This will enable our company to better serve our customers and thus, retain their business. 
+Using historical data collected from the first two quarters of the year,  use a machine learning model to predict if an upcoming delivery will arrive late or on time. This will enable our company to better serve our customers and thus, retain their business. By analyzing the historical data, we can focus in on each shifts performance, supervisor performce, and individual driver performance. 
 
 ## Hypothesis 
 
-With enough data, and a well trained model, we can predict if a delivery will be on time.  
+With a well trained machine learning model, and enough historical data, we can predict if a delivery will be on time. This includes customer location and distance. 
 
 ## Sources
 
-Keyed-in data from our employees in the Data Entry department.  
+* Keyed-in data from our employees in the Data Entry department.  
+* Customer input when they sign up for our services.
 
 ## Procedures
 
+### Data Collection
+* Using functions in Microsoft Excel, organize historical data
+### Data Cleaning
 * Filter data into categorical and calculable tables. Primary key between the two is Account
 
 ## Technologies Used
