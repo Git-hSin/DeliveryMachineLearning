@@ -1,3 +1,4 @@
+import numpy as np
 import model_main as m
 
 train_features = m.X_train
@@ -24,6 +25,11 @@ base_accuracy = evaluate(base_model, test_features, test_labels)
 
 from sklearn.model_selection import GridSearchCV
 # Create the parameter grid based on the results of random search 
+#           max_features='auto', max_leaf_nodes=None,
+#           min_impurity_decrease=0.0, min_impurity_split=None,
+#           min_samples_leaf=4, min_samples_split=2,
+#           min_weight_fraction_leaf=0.0, n_estimators=600, n_jobs=1,
+#           oob_score=False, random_state=None, verbose=0, warm_start=False)
 
 
 param_grid = {
@@ -32,7 +38,7 @@ param_grid = {
     'max_features': [60, 80, 100],
     'min_samples_leaf': [1, 2, 3],
     'min_samples_split': [8, 10, 12],
-    'n_estimators': [10, 200, 300, 1000]
+    'n_estimators': [10, 200, 300, 600]
 }
 # Create a based model
 

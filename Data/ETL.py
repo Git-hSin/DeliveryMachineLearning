@@ -33,6 +33,7 @@ df_deliver_to['lng'] = lngs
 
 
 
+
 #Tim start here
 
 # Below hashed out line needs to be fixed. Basically last dataframe for df_deliver_to, get rid of the rows that have no lat lngs
@@ -40,14 +41,36 @@ df_deliver_to['lng'] = lngs
 
 df_delivery = df_deliver_from.merge(df_deliver_to, how='inner', left_on='Account', right_on='Account') # Shape (40619, 27)
 
-# Above df is the main table that needs to be in a database
+#Import SQLite
+import sqlite3 as db
+#Establish Connection
+conn = db.connect('data.db') 
+#Create a cursor to execute SQL
+sql = conn.cursor()
+#Push DF to SQL
+df_delivery.to_sql(name='delivery',con=conn,if_exists='replace')
+conn.commit()
+#query
+delivery_df_final = sql.execute("""SELECT * FROM delivery""")
+conn.commit()
+
+
+######################################################
+# Back-Up Method with sqlalchemy and engine where columns
+# deleted due to bad data types
+
+#Delete columns with bad data types
+#del df_delivery['PlanArrival']
+#del df_delivery['ActualArrival']
 
 # import sqlalchemy, create an engine for SQLlite, connection to it
+#import sqlalchemy as db
+#from sqlalchemy import create_engine
+#engine = create_engine('sqlite:///data.db', echo=False)
 
 # make a table from dataframe pass through the engine and connection
-
+#df_delivery.to_sql('data', con=engine,if_exists='replace',index=False)
 # Make a test query command to see if you are able to retreive the data back to terminal
 
-
-
-#After fixing that, this is the 
+#query = "SELECT * FROM data"
+#query_df = pd.read_sql(query,engine)

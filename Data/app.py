@@ -62,7 +62,7 @@ app.layout = html.Div(children=[
 def model_input(Miles):
     if Miles is not None and Miles is not '':
         try:
-            prediction = m.lin_Reg.predict(float(Miles))
+            prediction = m.lin_Reg.predict(np.array(float(Miles)))
             return f'At {Miles} miles you will be {prediction} many hours off'
                 
         except ValueError:

@@ -20,6 +20,9 @@ df_deliver_to = pd.read_excel(filename, sheet_name='to')
 df_deliver_from_mapped = df_deliver_from.dropna()
 df_deliver_to_mapped = df_deliver_to.dropna()
 
+import sqlite3 as db
+conn = db.connect('data.db') 
+df_delivery = pd.read_sql_query("""SELECT * FROM delivery""",con=conn)
 def one_hot(df, cols):
     """
     @param df pandas DataFrame
@@ -33,7 +36,7 @@ def one_hot(df, cols):
 
 
 
-df_delivery = df_deliver_from_mapped.merge(df_deliver_to_mapped, how='inner', left_on='Account', right_on='Account') # Shape (40619, 27)
+#df_delivery = df_deliver_from_mapped.merge(df_deliver_to_mapped, how='inner', left_on='Account', right_on='Account') # Shape (40619, 27)
 
 df_delivery = df_delivery.drop(['VehicleID', 'PlanArrival', 'ActualArrival', 'DepartureDoor', 'AccountName', 'Account', 'Address', 'City', 'State', 'ZipCode', 'FullAddress', 'HasNAs', 'ShiftHour'], axis=1)
 

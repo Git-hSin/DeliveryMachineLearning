@@ -97,15 +97,3 @@ print('Improvement of {:0.2f}%.'.format( 100 * (random_accuracy - base_accuracy)
    #        min_samples_leaf=1, min_samples_split=10,
     #       min_weight_fraction_leaf=0.0, n_estimators=1000, n_jobs=1,
      #      oob_score=False, random_state=None, verbose=0, warm_start=False)
-#
-
-#
-
-# Fit the grid search to the data
-grid_search.fit(train_features, train_labels)
-grid_search.best_params_
-
-best_grid = grid_search.best_estimator_
-grid_accuracy = evaluate(best_grid, test_features, test_labels)
-
-print('Improvement of {:0.2f}%.'.format( 100 * (grid_accuracy - base_accuracy) / base_accuracy))
