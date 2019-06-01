@@ -35,20 +35,26 @@ With a well trained machine learning model, and enough historical data, we can p
 
 ### Data Cleaning and Preprocessing 
 * Using functions in Microsoft Excel, organize historical data
-* ![Excel](img/excel_after.png)
+ ![Excel](img/excel_after.png)
 * Use Microsoft Excel table filters to quickly identify bad data keyed in by our Data Entry department. 
-* ![Bad Data](img/bad_data.png)
+ ![Bad Data](img/bad_data.png)
+
+## ETL:
 ### Database Organization
 * Filter data into categorical and calculable tables
-* Use SQLite3 to organize the data into a 
-* ![SQLite](img/sqlite.png)
+* Use GeoPy geocoding to convert our Account addresses into latitude and longitude.
+![GeoPy](img/geo.png)
+* Merge data tables and calculate latitude/longitude so the model can account for distance
+![Merged](img/merge.png)
+* Use SQLite3 to organize the data into a SQLite database which allows for easier access and queries
+![SQLite](img/sqlite.png)
 
 ## Strategy and Metrics
 * After identifying which drivers were late to their deliveries in Q1 and Q2 of this year, there were over 32,000 records of usable data to work with. 
 * On Time: If a driver arrived at the Account location before or at the scheduled arrival time
 * Late: If a driver arrived at the Account location after the scheduled arrival time. 
 
-## The Model
+## The Model:
 
 
 ## Employee Facing Front-End Application
