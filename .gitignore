@@ -1,6 +1,43 @@
 
-# Created by https://www.gitignore.io/api/python,visualstudiocode
-# Edit at https://www.gitignore.io/?templates=python,visualstudiocode
+# Created by https://www.gitignore.io/api/python,microsoftoffice,jupyternotebook,visualstudiocode,jupyternotebooks
+# Edit at https://www.gitignore.io/?templates=python,microsoftoffice,jupyternotebook,visualstudiocode,jupyternotebooks
+
+### JupyterNotebook ###
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+
+# Remove previous ipynb_checkpoints
+#   git rm -r .ipynb_checkpoints/
+#
+
+### JupyterNotebooks ###
+# gitignore template for Jupyter Notebooks
+# website: http://jupyter.org/
+
+
+# Remove previous ipynb_checkpoints
+#   git rm -r .ipynb_checkpoints/
+
+### MicrosoftOffice ###
+*.tmp
+
+# Word temporary
+~$*.doc*
+
+# Word Auto Backup File
+Backup of *.doc*
+
+# Excel temporary
+~$*.xls*
+
+# Excel Backup File
+*.xlk
+
+# PowerPoint temporary
+~$*.ppt*
+
+# Visio autosave temporary files
+*.~vsd*
 
 ### Python ###
 # Byte-compiled / optimized / DLL files
@@ -78,7 +115,6 @@ docs/_build/
 target/
 
 # Jupyter Notebook
-.ipynb_checkpoints
 
 # IPython
 profile_default/
@@ -138,4 +174,4 @@ dmypy.json
 # Ignore all local history of files
 .history
 
-# End of https://www.gitignore.io/api/python,visualstudiocode
+# End of https://www.gitignore.io/api/python,microsoftoffice,jupyternotebook,visualstudiocode,jupyternotebooks
