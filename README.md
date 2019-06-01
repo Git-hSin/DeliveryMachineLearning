@@ -23,14 +23,19 @@ With a well trained machine learning model, and enough historical data, we can p
 ## Sources
 
 * Keyed-in data from our employees in the Data Entry department.  
-* Customer input when they sign up for our services.
 
 ## Procedures
 
 ### Data Collection
+* Our Data Entry and Acquisition Department has tracked the data for each day. 
+* Once a vehicle has been dispatched, it is recorded on the Excel Web Application file found on our company SharePoint server.
+* Once a driver has reported "On-Site", the team records that as well.
+* At the end of the day, our Transportation Analytics team uses our Account Records to determine distance
+* A final analysis of "Planned Arrival Time" vs. "Actual Arrival Time" and that day's data is added to the primary Excel file on our server.
+
+### Data Cleaning and Preprocessing 
 * Using functions in Microsoft Excel, organize historical data
 * ![Excel](img/excel_after.png)
-### Data Cleaning and Preprocessing 
 * Use Microsoft Excel table filters to quickly identify bad data keyed in by our Data Entry department. 
 * ![Bad Data](img/bad_data.png)
 ### Database Organization
@@ -42,6 +47,9 @@ With a well trained machine learning model, and enough historical data, we can p
 * After identifying which drivers were late to their deliveries in Q1 and Q2 of this year, there were over 32,000 records of usable data to work with. 
 * On Time: If a driver arrived at the Account location before or at the scheduled arrival time
 * Late: If a driver arrived at the Account location after the scheduled arrival time. 
+
+## The Model
+
 
 ## Employee Facing Front-End Application
 * In order for managers and supervisors to more accuratly plan delivery routes, an end-user front-end application of the predictive model has been developed. 
