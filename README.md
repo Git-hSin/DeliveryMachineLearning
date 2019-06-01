@@ -29,10 +29,10 @@ With a well trained machine learning model, and enough historical data, we can p
 
 ### Data Collection
 * Using functions in Microsoft Excel, organize historical data
-![Excel](img/excel_after.png)
+* ![Excel](img/excel_after.png)
 ### Data Cleaning and Preprocessing 
 * Use Microsoft Excel table filters to zero in on bad data 
-![Bad Data](img/bad_data.png
+* ![Bad Data](img/bad_data.png)
 ### Database Organization
 * Filter data into categorical and calculable tables
 
