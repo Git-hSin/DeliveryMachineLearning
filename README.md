@@ -14,7 +14,7 @@ With all of this in mind, our development team has constructed a machine learnin
 
 ## Objective/Purpose
 
-Using historical data collected from the first two quarters of the year,  use a machine learning model to predict if an upcoming delivery will arrive late or on time. This will enable our company to better serve our customers and thus, retain their business. By analyzing the historical data, we can focus in on each shifts performance, supervisor performce, and individual driver performance. 
+Using historical data collected from the first two quarters of the year,  use a machine learning model to predict if an upcoming delivery will arrive late or on time. This will enable our company to better serve our customers and thus, retain their business. By analyzing the historical data, we can focus in on each shifts performance, supervisor performance, and individual driver performance. 
 
 ## Hypothesis 
 
@@ -28,7 +28,7 @@ With a well trained machine learning model, and enough historical data, we can p
 * After identifying which drivers were late to their deliveries in Q1 and Q2 of this year, there were over 32,000 records of usable data to work with. 
 * On Time: If a driver arrived at the Account location before or at the scheduled arrival time
 * Late: If a driver arrived at the Account location after the scheduled arrival time. 
-* Our development team will share theri work via a *Git* development branch and push to a master branch once the project is ready for delpoyment. 
+* Our development team will share their work via a *Git* development branch and push to a master branch once the project is ready for deployment. 
 
 ### Data Collection
 * Our Data Entry and Acquisition Department has tracked the data for each day. 
@@ -56,11 +56,11 @@ With a well trained machine learning model, and enough historical data, we can p
 ## The Model:
 * Read in lat/long data, create Pandas DataFrames from sheets, and drop any NaN values so they do not effect the model
 ![](img/m1.png)
-* Define a function for one hot encoding and concatinate the DataFrames
+* Define a function for one hot encoding and concatenate the DataFrames
 ![](img/m2.png)
 * Merge the tables and drop unneeded columns
 ![](img/m3.png)
-* Seperate numeric and categorical variables
+* Separate numeric and categorical variables
 ![](img/m4.png)
 * Use the one hot encoding function and define test, target, and features 
 ![](img/m5.png)
@@ -70,7 +70,7 @@ With a well trained machine learning model, and enough historical data, we can p
 ![](img/m7.png)
 
 ## Employee Facing Front-End Application
-* In order for managers and supervisors to more accuratly plan delivery routes, an end-user front-end application of the predictive model has been developed. 
+* In order for managers and supervisors to more accurately plan delivery routes, an end-user front-end application of the predictive model has been developed. 
 
 ## Technologies Used
 
