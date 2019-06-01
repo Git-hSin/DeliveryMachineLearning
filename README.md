@@ -4,15 +4,17 @@
 
 ## Background
 
-The CEO of our movie delivery company has tasked our development team with constructing a machine learning model to help predict if our deliveries will be on time. We have been receiving complaints from our customers that their movies have been arriving late and we need to get ahead of this issue! 
+The CEO of our movie delivery company has tasked our development team with constructing a machine learning model to help predict if our deliveries will be on time. We have been receiving complaints from our customers that their movies have been arriving late and there have even been a number of customers who have canceled their subscriptions!  
 
 E-commerce has seen tremendous growth this century. Companies like Amazon and Ebay have reaped the rewards of a market that seeks to connect products to consumers, translating digital interactions to purchases of physical products. As the industry grows, complementary industries are poised to benefit alongside it. The delivery industry, in particular, is an essential piece in connecting consumers and businesses. As consumers increasingly make purchasing decisions based on time to deliver, competitors in the delivery industry must fight for advantages in reducing that measurement. Knowing the variables that contribute to a delivery can help determine a model that aims to improve on the time to deliver measurement for a delivery company. Using package and Python 3.7 a machine learning model is developed to provide insight via a front end application for business intelligence users of the delivery company.
 
-![delivery](img/delivery.jpg)
+With all of this in mind, our development team has constructed a machine learning model, with the help of ETL techniques, to help make delivery predictions and better serve our customers. 
+
+![Delivery](img/delivery.png)
 
 ## Objective/Purpose
 
-### To predict if a delivery will be on time or not.
+Predict if a delivery will be on time or late. This will enable our company to better serve our customers and thus, retain their business. 
 
 ## Hypothesis 
 
