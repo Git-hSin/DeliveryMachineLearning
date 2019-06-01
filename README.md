@@ -24,7 +24,10 @@ With a well trained machine learning model, and enough historical data, we can p
 
 * Keyed-in data from our employees in the Data Entry department.  
 
-## Procedures
+## Strategy and Metrics
+* After identifying which drivers were late to their deliveries in Q1 and Q2 of this year, there were over 32,000 records of usable data to work with. 
+* On Time: If a driver arrived at the Account location before or at the scheduled arrival time
+* Late: If a driver arrived at the Account location after the scheduled arrival time. 
 
 ### Data Collection
 * Our Data Entry and Acquisition Department has tracked the data for each day. 
@@ -49,13 +52,21 @@ With a well trained machine learning model, and enough historical data, we can p
 * Use SQLite3 to organize the data into a SQLite database which allows for easier access and queries
 ![SQLite](img/sqlite.png)
 
-## Strategy and Metrics
-* After identifying which drivers were late to their deliveries in Q1 and Q2 of this year, there were over 32,000 records of usable data to work with. 
-* On Time: If a driver arrived at the Account location before or at the scheduled arrival time
-* Late: If a driver arrived at the Account location after the scheduled arrival time. 
-
 ## The Model:
-
+* Read in lat/long data, create Pandas DataFrames from sheets, and drop any NaN values so they do not effect the model
+![](img/m1.png)
+* Define a function for one hot encoding and concatinate the DataFrames
+![](img/m2.png)
+* Merge the tables and drop unneeded columns
+![](img/m3.png)
+* Seperate numeric and categorical variables
+![](img/m4.png)
+* Use the one hot encoding function and define test, target, and features 
+![](img/m5.png)
+* Perform the train/test split to train/fit the model on the data, 
+![](img/m6.png)
+* Fit data to Random Forest and score the test data 
+![](img/m7.png)
 
 ## Employee Facing Front-End Application
 * In order for managers and supervisors to more accuratly plan delivery routes, an end-user front-end application of the predictive model has been developed. 
