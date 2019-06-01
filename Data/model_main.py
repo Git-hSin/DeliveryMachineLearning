@@ -9,13 +9,6 @@ import statsmodels.api as sm
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import r2_score
 
-# Front end packages
-import dash
-import dash_core_components as dcc
-import dash_html_components as html
-from dash.dependencies import Input, Output
-from sklearn.externals import joblib
-import plotly.graph_objs as go
 
 # Import ETL data
 
@@ -42,7 +35,7 @@ def one_hot(df, cols):
 
 df_delivery = df_deliver_from_mapped.merge(df_deliver_to_mapped, how='inner', left_on='Account', right_on='Account') # Shape (40619, 27)
 
-df_delivery = df_delivery.drop(['VehicleID', 'PlanArrival', 'ActualArrival', 'DepartureDoor', 'AccountName', 'Account', 'Address', 'City', 'State', 'ZipCode', 'FullAddress', 'HasNAs', 'ShiftHour'], axis=1).reset_index()
+df_delivery = df_delivery.drop(['VehicleID', 'PlanArrival', 'ActualArrival', 'DepartureDoor', 'AccountName', 'Account', 'Address', 'City', 'State', 'ZipCode', 'FullAddress', 'HasNAs', 'ShiftHour'], axis=1)
 
 # Find non-ints
 # df.applymap(lambda x: isinstance(x, (int, float)))
@@ -54,7 +47,7 @@ categorical_variables = ['Month','Dt','Year', 'Day', 'Week', 'Quarter', 'Driver'
 
 df_ML = one_hot(df_delivery, categorical_variables)
 
-df_ML_test = df_ML.drop(categorical_variables, axis=1).reset_index()
+df_ML_test = df_ML.drop(categorical_variables, axis=1)
 
 target = df_ML_test['PlanVsActual']
 target_names = ['late', 'on-time']
@@ -62,15 +55,15 @@ target_names = ['late', 'on-time']
 data = df_ML_test.drop('PlanVsActual', axis=1)
 feature_names = data.columns
 
+lin_reg = LinearRegression()
+lin_Reg = lin_reg.fit(data, df_ML_test.PlanVsActual)
+
+
+from sklearn import tree
 from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(data, target, test_size = 0.25, random_state=42)
 clf = tree.DecisionTreeRegressor()
 clf = clf.fit(X_train, y_train)
 clf.score(X_test, y_test)
 
-from sklearn.ensemble import RandomForestRegressor
-rf = RandomForestRegressor(n_estimators=200)
-rf = rf.fit(X_train, y_train)
-rf.score(X_test, y_test)
 
-sorted(zip(rf.feature_importances_, feature_names), reverse=True)

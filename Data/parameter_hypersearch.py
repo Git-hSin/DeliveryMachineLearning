@@ -47,7 +47,7 @@ random_grid = {'n_estimators': n_estimators,
 # Random search of parameters, using 3 fold cross validation, 
 # search across 100 different combinations, and use all available cores
 
-import model as m
+import model_main as m
 
 
 from sklearn.ensemble import RandomForestRegressor
@@ -61,6 +61,14 @@ test_labels = m.y_test
 rf_random = RandomizedSearchCV(estimator = rf, param_distributions = random_grid, n_iter = 100, cv = 3, verbose=2, random_state=42, n_jobs = -1)
 # Fit the random search model
 rf_random.fit(train_features, train_labels)
+
+#>>> h.rf_random.best_params_
+#{'n_estimators': 1000,
+#  'min_samples_split': 10,
+#  'min_samples_leaf': 1,
+#  'max_features': 'sqrt',
+#  'max_depth': 80,
+#  'bootstrap': False}
 
 
 def evaluate(model, test_features, test_labels):
@@ -79,26 +87,19 @@ base_model.fit(train_features, train_labels)
 base_accuracy = evaluate(base_model, test_features, test_labels)
 
 best_random = rf_random.best_estimator_
-random_accuracy = evaluate(best_random, test_features, test_label
+random_accuracy = evaluate(best_random, test_features, test_labels)
 
 print('Improvement of {:0.2f}%.'.format( 100 * (random_accuracy - base_accuracy) / base_accuracy))
+#>>> h.best_random
+#RandomForestRegressor(bootstrap=False, criterion='mse', max_depth=80,
+ #          max_features='sqrt', max_leaf_nodes=None,
+  #         min_impurity_decrease=0.0, min_impurity_split=None,
+   #        min_samples_leaf=1, min_samples_split=10,
+    #       min_weight_fraction_leaf=0.0, n_estimators=1000, n_jobs=1,
+     #      oob_score=False, random_state=None, verbose=0, warm_start=False)
+#
 
-
-from sklearn.model_selection import GridSearchCV
-# Create the parameter grid based on the results of random search 
-param_grid = {
-    'bootstrap': [True],
-    'max_depth': [80, 90, 100, 110],
-    'max_features': [2, 3],
-    'min_samples_leaf': [3, 4, 5],
-    'min_samples_split': [8, 10, 12],
-    'n_estimators': [100, 200, 300, 1000]
-}
-# Create a based model
-rf = RandomForestRegressor()
-# Instantiate the grid search model
-grid_search = GridSearchCV(estimator = rf, param_grid = param_grid, 
-                          cv = 3, n_jobs = -1, verbose = 2)
+#
 
 # Fit the grid search to the data
 grid_search.fit(train_features, train_labels)
